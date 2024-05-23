@@ -1,6 +1,6 @@
 public class Square{
-  int xCoord, yCoord;
-  Piece piece;
+  private int xCoord, yCoord;
+  private Piece piece;
   
   public Square(int x, int y){
     xCoord = x;
@@ -10,4 +10,11 @@ public class Square{
   public Square(int x, int y, Piece piece){
     Square(x, y);
     this.piece = piece;
+  }
+  public getPiece(){
+    return piece;
+  }
+  public setPiece(Piece newPiece){
+    this.piece = newPiece;
+  }
 }
