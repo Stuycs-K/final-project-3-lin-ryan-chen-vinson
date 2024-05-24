@@ -1,4 +1,4 @@
-public class Square{
+class Square{
   private int xCoord, yCoord;
   private Piece piece;
   
