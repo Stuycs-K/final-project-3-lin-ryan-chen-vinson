@@ -18,4 +18,7 @@ class Square{
   public void setPiece(Piece newPiece){
     this.piece = newPiece;
   }
+  public boolean isFull(){
+    return piece != null;
+  }
 }
