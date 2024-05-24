@@ -9,3 +9,8 @@ class Move{
      this.end = end;
      this.piece = piece;
    }
+   
+   public boolean isValid(){
+     return true;
+   }
+}
