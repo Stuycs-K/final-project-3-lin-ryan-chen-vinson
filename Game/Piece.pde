@@ -1,7 +1,11 @@
-import java.util.*;
-
 public abstract class Piece{
   color c;
   Square position;
-  abstract ArrayList getValidMoves(board Board);
+  int x, y;
+  
+  public Piece(int x, int y, color c){
+    this.x = x;
+    this.y = y;
+    this.c = c;
+  }
 }
