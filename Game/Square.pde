@@ -8,13 +8,14 @@ public class Square{
     this.piece = null;
   }
   public Square(int x, int y, Piece piece){
-    Square(x, y);
+    xCoord = x;
+    yCoord = y;
     this.piece = piece;
   }
-  public getPiece(){
+  public Piece getPiece(){
     return piece;
   }
-  public setPiece(Piece newPiece){
+  public void setPiece(Piece newPiece){
     this.piece = newPiece;
   }
 }
