@@ -15,4 +15,13 @@ class Board{
     }else{
       return null;
     }
+  }
+  
+  public boolean isCheckmate(int player, King white, King black){
+    if(player == 1){
+      return white.getValidMoves.size() == 0;
+    }else if(player == 2){
+      return black.getValidMoves.size() == 0;
+    }
+    return false;
 }
