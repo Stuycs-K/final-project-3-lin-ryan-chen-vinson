@@ -1,6 +1,6 @@
 public abstract class Piece{
   color c;
-  Square position;
+  //Square position;
   int x, y;
   
   public Piece(int x, int y, color c){
@@ -8,4 +8,6 @@ public abstract class Piece{
     this.y = y;
     this.c = c;
   }
+  
+  public abstract boolean isValidMove(int newX, int newY);
 }
