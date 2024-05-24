@@ -1,4 +1,4 @@
-public abstract class Piece{
+abstract class Piece{
   color c;
   //Square position;
   int x, y;
