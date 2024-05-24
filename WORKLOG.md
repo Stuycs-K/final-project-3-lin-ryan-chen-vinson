@@ -14,9 +14,11 @@ info
 
 ## GROUP MEMBER 2
 
-### date x
+### 5/23/24
 
-info
+- Set up the Board, Game, Square, and Move class for all the basic game logic component of the program.
+- Finished the constructors, accessors, and mutators for Board, Game, Square, and Move
+- Finished simple "is" methods for a few of the classes where applicable
 
 ### date y
 
