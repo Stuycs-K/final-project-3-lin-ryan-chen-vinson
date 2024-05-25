@@ -7,9 +7,9 @@
 - Set up Piece abstract class and classes for all the specific pieces (king, queen, rook, etc.)
 - Worked on Piece class, king class, and knight class, and attempted to fix errors that occurred (not fixed yet)
 
-### date y
+### 5/24/24
 
-info
+- Created another file to test board design/pattern
 
 
 ## GROUP MEMBER 2
