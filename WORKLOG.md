@@ -20,6 +20,8 @@
 - Finished the constructors, accessors, and mutators for Board, Game, Square, and Move
 - Finished simple "is" methods for a few of the classes where applicable
 
-### date y
+### 5/24/24 + weekend
+- started is checkmate, need king class to be finished
+- added more necessary accessors
+- finished makeMove
 
-info
