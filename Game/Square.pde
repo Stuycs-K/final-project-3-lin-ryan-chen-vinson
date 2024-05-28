@@ -21,4 +21,12 @@ class Square{
   public boolean isFull(){
     return piece != null;
   }
+  
+  public int getX(){
+    return xCoord;
+  }
+  
+  public int getY(){
+    return yCoord;
+  }
 }
