@@ -10,4 +10,15 @@ abstract class Piece{
   }
   
   public abstract boolean isValidMove(int newX, int newY);
+  
+  /*
+  public boolean isValid(int newX, int newY){
+    if (newX < 0 || newX >= boardSize || newY < 0 || newY >= boardSize) {
+      return false;
+    }
+    if (newX == x && newY == y) {
+      return false;
+    }
+  }
+  */
 }

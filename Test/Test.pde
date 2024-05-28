@@ -9,9 +9,13 @@ void grid() {
   int vertSquares = height / SQUARE_SIZE;
   for(int i = 0; i < horSquares; i++) {
     for (int x = 0; x < vertSquares; x++) {
-      fill(0, 0, 0);
-      stroke(255, 255, 255);
-      square(SQUARE_SIZE * i, SQUARE_SIZE * x, SQUARE_SIZE);
+      if ((i+x) % 2 == 0){
+        fill(255);
+      }
+      else{
+        fill(0);
+      }
+      square(SQUARE_SIZE * x, SQUARE_SIZE * i, SQUARE_SIZE);
     }
   }
 }
