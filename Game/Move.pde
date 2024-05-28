@@ -13,4 +13,15 @@ class Move{
    public boolean isValid(){
      return true;
    }
+   
+   public boolean makeMove(){
+     if(isValid()){
+       end.setPiece(piece);
+       start.setPiece(null);
+       piece.x = end.xCoord;
+       piece.y = end.yCoord;
+       return true;
+     }
+     return false;
+   }
 }
