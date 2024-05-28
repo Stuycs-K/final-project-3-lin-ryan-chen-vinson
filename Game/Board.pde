@@ -16,7 +16,7 @@ class Board{
       return null;
     }
   }
-
+/*
   public boolean isCheckmate(int player, King white, King black){
     if(player == 1){
       return white.getValidMoves().size() == 0;
@@ -25,4 +25,5 @@ class Board{
     }
     return false;
   }
+  */
 }
