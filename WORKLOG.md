@@ -7,9 +7,10 @@
 - Set up Piece abstract class and classes for all the specific pieces (king, queen, rook, etc.)
 - Worked on Piece class, king class, and knight class, and attempted to fix errors that occurred (not fixed yet)
 
-### 5/24/24
+### 5/24/24 + weekend
 
 - Created another file to test board design/pattern
+- Created boundary method for piece movement that applies to all pieces
 
 
 ## GROUP MEMBER 2
