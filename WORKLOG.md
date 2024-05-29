@@ -29,3 +29,8 @@
 - added more necessary accessors
 - finished makeMove
 
+### 5/28/24
+- fixed constructor for King to match the new Piece abstract requirements
+- added more necessary accessors to Piece class
+- wrote and completed isValidMove and getValidMoves for King
+
