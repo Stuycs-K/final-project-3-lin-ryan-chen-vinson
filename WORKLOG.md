@@ -12,6 +12,9 @@
 - Created another file to test board design/pattern
 - Created boundary method for piece movement that applies to all pieces
 
+### 5/28/24
+- Worked on Piece class (testing approaches) and Pawn class
+- Found and uploaded PNGs of chess pieces that would fit with the board
 
 ## GROUP MEMBER 2
 
