@@ -2,7 +2,7 @@ public class Pawn extends Piece{
   public Pawn(Square position, color c){
     super(position, c);
     
-    if (c == color(0)){
+    if (c == color(255)){
       PImage p = loadImage("pawnW.png");
     }
     else{
