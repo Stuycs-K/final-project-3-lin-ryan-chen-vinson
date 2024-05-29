@@ -1,12 +1,19 @@
 import java.util.*;
 
 class King extends Piece{
-  public King(int x, int y, color c){
-    super(x, y, c);
+  public King(Square position, color c){
+    super(position, c);
+    
+    if (c == color(0)){
+      PImage p = loadImage("kingW.png");
+    }
+    else{
+      PImage p = loadImage("kingB.png");
+    }
   }
   
   public boolean isValidMove(int newX, int newY){
-    int i = Math.abs(newX - x);
+    int i = this.position.getX;
     int j = Math.abs(newY - y);
     return (i <= 1 && j <=1);
   }
