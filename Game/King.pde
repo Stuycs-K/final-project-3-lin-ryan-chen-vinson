@@ -13,9 +13,12 @@ class King extends Piece{
   }
   
   public boolean isValidMove(int newX, int newY){
-    int i = this.position.getX;
+    int x = this.position.getX();
+    int y = this.position.getY();
+    int i = Math.abs(newX - x);
     int j = Math.abs(newY - y);
-    return (i <= 1 && j <=1);
+    
+    return(i <= 1 && j <=1);
   }
   
   public ArrayList<Square> getValidMoves(int destinationX, int destinationY){
