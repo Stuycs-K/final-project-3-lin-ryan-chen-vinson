@@ -1,4 +1,4 @@
-abstract class Piece{
+class Piece{
   color c;
   Square position;
   //int x, y;
@@ -9,7 +9,9 @@ abstract class Piece{
     
   }
   
-  public abstract boolean isValidMove(int newX, int newY);
+  public boolean isValidMove(int newX, int newY){
+    return true; //placeholder
+  };
   
   /*
   public boolean isValid(int newX, int newY){
