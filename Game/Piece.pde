@@ -1,4 +1,4 @@
-class Piece{
+abstract class Piece{
   color c;
   Square position;
   //int x, y;
@@ -9,9 +9,9 @@ class Piece{
     
   }
   
-  public boolean isValidMove(int newX, int newY){
-    return true; //placeholder
-  };
+  public abstract boolean isValidMove(int newX, int newY);
+  
+  public abstract ArrayList<Square> getValidMoves(Square[][] board);
   
   public color getColor(){
     return c;
