@@ -3,8 +3,7 @@ import java.util.*;
 class King extends Piece{
   public King(Square position, color c){
     super(position, c);
-    
-    if (c == color(0)){
+    if (c == color(255)){
       PImage p = loadImage("kingW.png");
     }
     else{
