@@ -13,6 +13,14 @@ class Piece{
     return true; //placeholder
   };
   
+  public color getColor(){
+    return c;
+  }
+  
+  public Square getPosition(){
+    return position;
+  }
+  
   /*
   public boolean isValid(int newX, int newY){
     if (newX < 0 || newX >= boardSize || newY < 0 || newY >= boardSize) {
