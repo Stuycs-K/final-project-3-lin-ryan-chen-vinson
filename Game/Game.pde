@@ -5,10 +5,13 @@ PImage kingW, kingB, queenW, queenB, rookW, rookB, bishopW, bishopB, knightW, kn
 void setup(){
   size(800,800);
   board = new Board();
+  loadImages();
+  noLoop();
 }
 
 void draw(){
   grid();
+  drawPieces();
 }
 
 void grid() {
