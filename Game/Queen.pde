@@ -6,8 +6,12 @@ public class Queen extends Piece{
   }
   
   public boolean isValidMove(int newX, int newY){
-    int currX;
-    int currY;
+    int currX = position.getX();
+    int currY = position.getY();
     
+    if (newX == currX || newY == currY || Math.abs(newX - currentX) == Math.abs(newY - currentY)){
+      return true;
+    }
+    return false;
   }
 }
