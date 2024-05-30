@@ -16,6 +16,10 @@
 - Worked on Piece class (testing approaches) and Pawn class
 - Found and uploaded PNGs of chess pieces that would fit with the board
 
+### 5/29/24
+- Worked on and finished Pawn, Queen, and Rook classes
+- Fixed errors in a few of the classes (var names and logic issues)
+
 ## GROUP MEMBER 2
 
 ### 5/23/24
