@@ -31,6 +31,18 @@ public class Rook extends Piece{
         }
       }
     }
+    
+    for (int i = 0; i < board.length; i++){
+      if (i != currX){
+        Square square = board[i][currY];
+        if (!square.isFull() || square.getPiece().getColor() != this.c){
+          validMoves.add(square);
+        }
+        if (square.isFull()){
+          break;
+        }
+      }
+    }
     return validMoves;
   }
 }
