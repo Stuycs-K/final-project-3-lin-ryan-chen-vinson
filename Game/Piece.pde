@@ -9,7 +9,7 @@ abstract class Piece{
     
   }
   
-  public abstract boolean isValidMove(int newX, int newY);
+  //public abstract boolean isValidMove(int newX, int newY);
   
   public abstract ArrayList<Square> getValidMoves(Square[][] board);
   

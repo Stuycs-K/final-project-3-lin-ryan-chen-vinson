@@ -34,3 +34,7 @@
 - added more necessary accessors to Piece class
 - wrote and completed isValidMove and getValidMoves for King
 
+### 5/29/24
+- finished the bishop class
+- finished the knight class
+- fixed minor errors in several classes
