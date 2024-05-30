@@ -10,7 +10,7 @@ class Bishop extends Piece{
       PImage p = loadImage("bishopB.png");
     }
   }
-  
+  /*
   public boolean isValidMove(int newX, int newY){
     int x = this.position.getX();
     int y = this.position.getY();
@@ -19,6 +19,7 @@ class Bishop extends Piece{
     
     return i == j;
   }
+  */
   
   public ArrayList<Square> getValidMoves(Square[][] board){
     ArrayList<Square>list = new ArrayList<Square>();
@@ -38,7 +39,7 @@ class Bishop extends Piece{
           if(dSquare.getPiece().getColor() != this.c){
             list.add(dSquare);
           }
-          dX = 10000000;
+          break;
         } else{
           list.add(dSquare);
         }
