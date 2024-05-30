@@ -29,4 +29,8 @@ class Square{
   public int getY(){
     return yCoord;
   }
+  
+  public void removePiece(){
+    this.piece = null;
+  }
 }

@@ -21,6 +21,10 @@ abstract class Piece{
     return position;
   }
   
+  public void setPosition(Square position){
+    this.position = position;
+  }
+  
   /*
   public boolean isValid(int newX, int newY){
     if (newX < 0 || newX >= boardSize || newY < 0 || newY >= boardSize) {
