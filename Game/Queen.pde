@@ -9,7 +9,7 @@ public class Queen extends Piece{
     int currX = position.getX();
     int currY = position.getY();
     
-    if (newX == currX || newY == currY || Math.abs(newX - currentX) == Math.abs(newY - currentY)){
+    if (newX == currX || newY == currY || Math.abs(newX - currX) == Math.abs(newY - currY)){
       return true;
     }
     return false;
@@ -45,11 +45,41 @@ public class Queen extends Piece{
     }
     
     for (int i = 1; currX + i < board.length && currY + i < board.length; i++){
-      Square square  = board[currX + i][currY + i];
+      Square square  = board[currX + i][currY - i];
       if (!square.isFull() || square.getPiece().getColor() != this.c){
         validMoves.add(square);
       }
       if(square.isFull()){
+        break;
+      }
+    }
+    
+    for (int i = 1; currX - i >= 0 && currY - i >= 0; i++){
+      Square square = board[currX - i][currY - i];
+      if (!square.isFull() || square.getPiece().getColor() != this.c){
+        validMoves.add(square);
+      }
+      if (square.isFull()){
+        break;
+      }
+    }
+    
+    for (int i = 1; currX + 1 < board.length && currY - i >= 0; i++){
+      Square square = board[currX + i][currY - i];
+      if (!square.isFull() || square.getPiece().getColor() != this.c){
+        validMoves.add(square);
+      }
+      if (square.isFull()){
+        break;
+      }
+    }
+    
+    for (int i = 1; currX - 1 >= 0 && currY + i < board.length; i++){
+      Square square = board[currX - i][currY + i];
+      if (!square.isFull() || square.getPiece().getColor() != this.c){
+        validMoves.add(square);
+      }
+      if (square.isFull()){
         break;
       }
     }
