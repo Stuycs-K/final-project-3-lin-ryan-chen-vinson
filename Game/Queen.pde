@@ -43,6 +43,16 @@ public class Queen extends Piece{
         }
       }
     }
+    
+    for (int i = 1; currX + i < board.length && currY + i < board.length; i++){
+      Square square  = board[currX + i][currY + i];
+      if (!square.isFull() || square.getPiece().getColor() != this.c){
+        validMoves.add(square);
+      }
+      if(square.isFull()){
+        break;
+      }
+    }
     return validMoves;
   }
 }
