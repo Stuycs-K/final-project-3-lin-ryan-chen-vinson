@@ -7,6 +7,7 @@ class Board{
         board[i][j] = new Square(i, j);
       }
     }
+    initializePieces();
   }
 
   public Square getSquare(int x, int y){
