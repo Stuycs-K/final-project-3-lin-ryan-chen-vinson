@@ -7,26 +7,26 @@ void setup(){
   board = new Board();
 }
 
+void draw(){
+  grid();
+}
+
 void grid() {
   int horSquares = width / SQUARE_SIZE;
   int vertSquares = height / SQUARE_SIZE;
   for(int i = 0; i < horSquares; i++) {
     for (int x = 0; x < vertSquares; x++) {
       if ((i+x) % 2 == 0){
-        fill(118,150,86);
-        stroke(118,150,86);
-      }
-      else{
         fill(238,238,210);
         stroke(238,238,210);
+      }
+      else{  
+        fill(118,150,86);
+        stroke(118,150,86);
       }
       square(SQUARE_SIZE * x, SQUARE_SIZE * i, SQUARE_SIZE);
     }
   }
-}
-
-void draw(){
-  grid();
 }
 
 void drawPieces(){
@@ -53,5 +53,62 @@ PImage getPieceImage(Piece piece){
       return kingB;
     }
   }
-  return null;
+  else if (piece.getClass() == Queen.class){
+    if (piece.getColor() == 255){
+      return queenW;
+    }
+    else{
+      return queenB;
+    }
+  }
+  else if (piece.getClass() == Bishop.class){
+    if (piece.getColor() == 255){
+      return bishopW;
+    }
+    else{
+      return bishopB;
+    }
+  }
+  else if (piece.getClass() == Rook.class){
+    if (piece.getColor() == 255){
+      return rookW;
+    }
+    else{
+      return rookB;
+    }
+  }
+  else if (piece.getClass() == Knight.class){
+    if (piece.getColor() == 255){
+      return knightW;
+    }
+    else{
+      return knightB;
+    }
+  }
+  else if (piece.getClass() == Pawn.class){
+    if (piece.getColor() == 255){
+      return pawnW;
+    }
+    else{
+      return pawnB;
+    }
+  }
+  else {
+    return null;
+  }
+}
+
+void loadImages(){
+  kingW = loadImage("kingW.png");
+  kingB = loadImage("kingB.png");
+  queenW = loadImage("queenW.png");
+  queenB = loadImage("queenB.png");
+  rookW = loadImage("rookW.png");
+  rookB = loadImage("rookB.png");
+  pawnW = loadImage("pawnW.png");
+  pawnB = loadImage("pawnB.png");
+  bishopW = loadImage("bishopW.png");
+  bishopB = loadImage("bishopB.png");
+  knightW = loadImage("knightW.png");
+  knightB = loadImage("knightB.png");
 }
