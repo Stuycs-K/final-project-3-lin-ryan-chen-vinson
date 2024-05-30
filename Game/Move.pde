@@ -18,8 +18,7 @@ class Move{
      if(isValid()){
        end.setPiece(piece);
        start.setPiece(null);
-       piece.x = end.xCoord;
-       piece.y = end.yCoord;
+       piece.position = end;
        return true;
      }
      return false;
