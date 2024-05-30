@@ -28,3 +28,30 @@ void grid() {
 void draw(){
   grid();
 }
+
+void drawPieces(){
+  for (int i = 0; i < 8; i++){
+    for (int j = 0; j < 8; j++){
+      Square square = board.getSquare(i, j);
+      if (square.isFull()){
+        Piece piece = square.getPiece();
+        PImage img = getPieceImage(piece);
+        if (img != null){
+          image(img, SQUARE_SIZE * j, SQUARE_SIZE * i, SQUARE_SIZE, SQUARE_SIZE);
+        }
+      }
+    }
+  }
+}
+
+PImage getPieceImage(Piece piece){
+  if (piece.getClass() == King.class){
+    if (piece.getColor() == 255){
+      return kingW;
+    }
+    else{
+      return kingB;
+    }
+  }
+  return null;
+}
