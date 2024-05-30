@@ -22,7 +22,7 @@ public class Rook extends Piece{
     
     for (int i = 0; i < board.length; i++){
       if (i != currY){
-        Square square = board[currentX][i];
+        Square square = board[currX][i];
         if (!square.isFull() || square.getPiece().getColor() != this.c){
           validMoves.add(square);
         }
