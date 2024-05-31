@@ -47,3 +47,15 @@ void winScreen(String winner){
   fill(255);
   text(winner + " won!", width / 2, height / 2);
 }
+
+void keyPressed(){
+  if (win && key == 'n'){
+    reset();
+  }
+}
+
+void reset(){
+  win = false;
+  winner = "";
+  redraw();
+}
