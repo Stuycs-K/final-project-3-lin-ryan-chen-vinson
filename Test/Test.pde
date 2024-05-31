@@ -1,4 +1,6 @@
 static final int SQUARE_SIZE = 100;
+boolean win = false;
+String winner = "";
 
 void setup(){
   size(800,800);
@@ -21,5 +23,27 @@ void grid() {
 }
 
 void draw(){
-  grid();
+  if (win){
+    winScreen(winner);
+  }
+  else{
+    grid();
+    checkWinCond();
+  }
+}
+
+void checkWinCond(){
+  if (win == false){
+    win = true;
+    winner = "White";
+    redraw();
+  }
+}
+
+void winScreen(String winner){
+  background(0);
+  textAlign(CENTER);
+  textSize(64);
+  fill(255);
+  text(winner + " won!", width / 2, height / 2);
 }
