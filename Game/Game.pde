@@ -47,6 +47,13 @@ void drawPieces(){
   }
 }
 
+void makeMove(Piece piece, Square dSquare){
+  Square current = piece.getPosition();
+  current.removePiece();
+  dSquare.setPiece(piece);
+  piece.setPosition(dSquare);
+}
+
 PImage getPieceImage(Piece piece){
   if (piece.getClass() == King.class){
     if (piece.getColor() == 255){

@@ -1,3 +1,4 @@
+/*
 class Move{
    Square start;
    Square end;
@@ -24,3 +25,4 @@ class Move{
      return false;
    }
 }
+*/
