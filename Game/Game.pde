@@ -1,6 +1,9 @@
 static final int SQUARE_SIZE = 100;
 Board board;
 PImage kingW, kingB, queenW, queenB, rookW, rookB, bishopW, bishopB, knightW, knightB, pawnW, pawnB;
+Piece selected = null;
+ArrayList<Square> listMoves = new ArrayList<Square>();
+
 
 void setup(){
   size(800,800);
@@ -45,6 +48,13 @@ void drawPieces(){
       }
     }
   }
+}
+
+void makeMove(Piece piece, Square dSquare){
+  Square current = piece.getPosition();
+  current.removePiece();
+  dSquare.setPiece(piece);
+  piece.setPosition(dSquare);
 }
 
 PImage getPieceImage(Piece piece){

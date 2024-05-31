@@ -20,6 +20,10 @@
 - Worked on and finished Pawn, Queen, and Rook classes
 - Fixed errors in a few of the classes (var names and logic issues)
 
+### 5/30/24
+- Worked on Game class (loadImage() and drawPieces() methods)
+- Attempted to do movement for pieces (added remove and setPosition)
+
 ## GROUP MEMBER 2
 
 ### 5/23/24
@@ -42,3 +46,8 @@
 - finished the bishop class
 - finished the knight class
 - fixed minor errors in several classes
+
+### 5/29/24
+- finsihed initializeboard with white and black pieces
+- finished makeMoves method in game
+- temporarily removed Move class (see if we need later because it's kind of useless)
