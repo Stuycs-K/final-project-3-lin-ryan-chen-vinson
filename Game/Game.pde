@@ -1,6 +1,8 @@
 static final int SQUARE_SIZE = 100;
 Board board;
 PImage kingW, kingB, queenW, queenB, rookW, rookB, bishopW, bishopB, knightW, knightB, pawnW, pawnB;
+Piece selected = null;
+
 
 void setup(){
   size(800,800);
