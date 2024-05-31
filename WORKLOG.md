@@ -46,3 +46,8 @@
 - finished the bishop class
 - finished the knight class
 - fixed minor errors in several classes
+
+### 5/29/24
+- finsihed initializeboard with white and black pieces
+- finished makeMoves method in game
+- temporarily removed Move class (see if we need later because it's kind of useless)
