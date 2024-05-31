@@ -20,6 +20,10 @@
 - Worked on and finished Pawn, Queen, and Rook classes
 - Fixed errors in a few of the classes (var names and logic issues)
 
+### 5/30/24
+- Worked on Game class (loadImage() and drawPieces() methods)
+- Attempted to do movement for pieces (added remove and setPosition)
+
 ## GROUP MEMBER 2
 
 ### 5/23/24
