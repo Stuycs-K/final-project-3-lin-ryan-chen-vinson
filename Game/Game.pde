@@ -51,8 +51,8 @@ void drawPieces(){
 }
 
 void mousePressed(){
-  int x = mouseX/SQUARE_SIZE;
-  int y = mouseY/SQUARE_SIZE;
+  int x = mouseY/SQUARE_SIZE;
+  int y = mouseX/SQUARE_SIZE;
   
   if(selected == null){
     Square square = board.getSquare(x,y);
