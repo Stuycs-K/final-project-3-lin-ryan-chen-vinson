@@ -2,7 +2,7 @@ static final int SQUARE_SIZE = 100;
 Board board;
 PImage kingW, kingB, queenW, queenB, rookW, rookB, bishopW, bishopB, knightW, knightB, pawnW, pawnB;
 Piece selected = null;
-ArrayList<Square> listMoves = new ArrayList<Square>();
+ArrayList<Square> list = new ArrayList<Square>();
 
 
 void setup(){
@@ -49,6 +49,29 @@ void drawPieces(){
     }
   }
 }
+
+void mousePressed(){
+  int x = mouseY/SQUARE_SIZE;
+  int y = mouseX/SQUARE_SIZE;
+  
+  if(selected == null){
+    Square square = board.getSquare(x,y);
+    if(square != null && square.isFull()){
+      selected = square.getPiece();
+      list = selected.getValidMoves(board.board);
+    }
+  }else{
+    Square dSquare = board.getSquare(x, y);
+    if(dSquare != null && list.contains(dSquare)){
+      makeMove(selected, dSquare);
+    }
+    selected = null;
+    list.clear();
+  }
+  redraw();
+}
+  
+      
 
 void makeMove(Piece piece, Square dSquare){
   Square current = piece.getPosition();
