@@ -16,33 +16,58 @@ public class Rook extends Piece{
   }
   
   public ArrayList<Square> getValidMoves(Square[][] board){
-    ArrayList<Square> validMoves = new ArrayList<Square>();
+    ArrayList<Square> list = new ArrayList<Square>();
     int currX = position.getX();
     int currY = position.getY();
     
-    for (int i = 0; i < board.length; i++){
-      if (i != currY){
-        Square square = board[currX][i];
-        if (!square.isFull() || square.getPiece().getColor() != this.c){
-          validMoves.add(square);
+    for(int i = currY - 1; i >= 0; i--){
+      Square square = board[currX][i];
+      if(square.isFull()){
+        if(square.getPiece().getColor() != this.c){
+          list.add(square);
         }
-        if (square.isFull()){
-          break;
-        }
+        break;
+      }else{
+        list.add(square);
       }
     }
     
-    for (int i = 0; i < board.length; i++){
-      if (i != currX){
-        Square square = board[i][currY];
-        if (!square.isFull() || square.getPiece().getColor() != this.c){
-          validMoves.add(square);
+    for(int i = currY + 1; i < board.length; i++){
+      Square square = board[currX][i];
+      if(square.isFull()){
+        if(square.getPiece().getColor() != this.c){
+          list.add(square);
         }
-        if (square.isFull()){
-          break;
-        }
+        break;
+      }else{
+        list.add(square);
       }
     }
-    return validMoves;
+    
+    for(int i = currX - 1; i >= 0; i--){
+      Square square = board[i][currY];
+      if(square.isFull()){
+        if(square.getPiece().getColor() != this.c){
+          list.add(square);
+        }
+        break;
+      }else{
+        list.add(square);
+      }
+    }
+    
+    for(int i = currX + 1; i < board.length; i++){
+      Square square = board[i][currY];
+      if(square.isFull()){
+        if(square.getPiece().getColor() != this.c){
+          list.add(square);
+        }
+        break;
+      }else{
+        list.add(square);
+      }
+    }
+    
+    return list;
   }
 }
