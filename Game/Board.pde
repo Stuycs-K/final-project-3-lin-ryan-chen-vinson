@@ -22,7 +22,7 @@ class Board{
     board[0][1].setPiece(new Knight(board[0][1], 0));
     board[0][2].setPiece(new Bishop(board[0][2], 0));
     board[0][3].setPiece(new Queen(board[0][3], 0));
-    board[0][4].setPiece(new King(board[0][4], 0));
+    board[4][4].setPiece(new King(board[4][4], 0));
     board[0][5].setPiece(new Bishop(board[0][5], 0));
     board[0][6].setPiece(new Knight(board[0][6], 0));
     board[0][7].setPiece(new Rook(board[0][7], 0));
