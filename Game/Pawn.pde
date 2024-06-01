@@ -24,8 +24,22 @@ class Pawn extends Piece {
       direction = 1;
     }
     
+    if(isValidMove(board, x + direction, y) && !board[x+direction][y].isFull()){
+      list.add(board[x + direction][y]);
+    }
     
+    if(firstTurn && isValidMove(board, x + (2 * direction), y) && ! board[x + (2* direction)][y].isFull()){
+      list.add(board[x + (2 * direction)][y]);
+    }
     
-    
+    if(isValidMove(board, x + direction, y - 1) && board[x + direction][y - 1].isFull() &&
+      board[x + direction][y - 1].getPiece().getColor() != this.c){
+        list.add(board[x + direction][y - 1]);
+      }
+    if(isValidMove(board, x + direction, y + 1) && board[x + direction][y + 1].isFull() &&
+      board[x + direction][y + 1].getPiece().getColor() != this.c){
+        list.add(board[x + direction][y + 1]);
+    }
+    return list;
   }
 }
