@@ -43,7 +43,23 @@ class Board{
   }
   
   public boolean isCheck(boolean isWhite){
-    return true;
+    King king = findK(isWhite);
+    if (king == null){
+      return false;
+    }
+    Square kingPos = king.getPosition();
+    for (int i = 0; i < 8; i++){
+      for (int j = 0; j < 8; j++){
+        Square square = board[i][j];
+        if (square.isFull() && square.getPiece().getColor() != king.getColor()){
+          ArrayList<Square> list = square.getPiece().getValidMoves(board);
+          if (list.contains(kingPos)){
+            return true;
+          }
+        }
+      }
+    }
+    return false;
   }
   
   private King findK(boolean isWhite){
