@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 class Pawn extends Piece {
-  private boolean firstTurn;
   
   public Pawn(Square position, color c){
     super(position, c);
