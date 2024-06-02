@@ -84,3 +84,44 @@ class Board{
     return null;
   }
   
+  public boolean isCheckmate(boolean isWhite){
+    if(!isCheck(isWhite)){
+      return false;
+    }
+    int c;
+    if (isWhite){
+      c = 255;
+    }
+    else {
+      c = 0;
+    }
+    for (int i = 0; i < 8; i++){
+      for (int j = 0; j < 8; j++){
+        Square square = board[i][j];
+        if (square.isFull() && square.getPiece().getColor() == c){
+          ArrayList<Square> list = square.getPiece().getValidMoves(board);
+        }
+        for (Square move : list){
+          Piece captured = move.getPiece();
+          Square original = square;
+          Piece moving = square.getPiece();
+          
+          original.removePiece();
+          move.setPiece(moving);
+          moving.setPosition(move);
+          
+          boolean inCheck = isCheck(isWhite);
+          
+          move.setPiece(captured);
+          original.setPiece(moving);
+          moving.setPosition(original);
+          
+          if (!inCheck){
+            return false;
+          }
+        }
+      }
+    }
+    return true;
+  }
+}
