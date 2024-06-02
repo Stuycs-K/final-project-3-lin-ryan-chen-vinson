@@ -16,7 +16,7 @@ class Board{
     }else{
       return null;
     }
-  }
+  }  
   public void initializePieces(){
     board[0][0].setPiece(new Rook(board[0][0], 0));
     board[0][1].setPiece(new Knight(board[0][1], 0));
@@ -41,14 +41,46 @@ class Board{
       board[6][i].setPiece(new Pawn(board[6][i], 255));
     }
   }
-/*
-  public boolean isCheckmate(int player, King white, King black){
-    if(player == 1){
-      return white.getValidMoves().size() == 0;
-    }else if(player == 2){
-      return black.getValidMoves().size() == 0;
+  
+  public boolean isCheck(boolean isWhite){
+    King king = findK(isWhite);
+    if (king == null){
+      return false;
+    }
+    Square kingPos = king.getPosition();
+    for (int i = 0; i < 8; i++){
+      for (int j = 0; j < 8; j++){
+        Square square = board[i][j];
+        if (square.isFull() && square.getPiece().getColor() != king.getColor()){
+          ArrayList<Square> list = square.getPiece().getValidMoves(board);
+          if (list.contains(kingPos)){
+            return true;
+          }
+        }
+      }
     }
     return false;
   }
-  */
-}
+  
+  private King findK(boolean isWhite){
+    int c;
+    if (isWhite){
+      c = 255;
+    }
+    else {
+      c = 0;
+    }
+    for (int i = 0; i < 8; i++){
+      for (int j = 0; j < 8; j++){
+        Square square = board[i][j];
+        if (square.isFull()){
+          Piece piece = square.getPiece();
+          if (piece.getClass() == King.class && piece.getColor() == c){
+            return (King) piece;
+          }
+        }
+      }
+    }
+    return null;
+  }
+  
