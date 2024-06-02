@@ -59,13 +59,11 @@ void mousePressed(){
     Square square = board.getSquare(x,y);
     if(square != null && square.isFull()){
       selected = square.getPiece();
-      if (isWhiteTurn && selected.getColor() == 255){
+      if (isWhiteTurn && selected.getColor() == 255 || !isWhiteTurn && selected.getColor() == 0){
         list = selected.getValidMoves(board.board);
-        isWhiteTurn = !isWhiteTurn;
       }
-      else if (!isWhiteTurn && selected.getColor() == 0){
-        list = selected.getValidMoves(board.board);
-        isWhiteTurn = !isWhiteTurn;
+      else {
+        selected = null;
       }
     }
   }else{
@@ -75,6 +73,7 @@ void mousePressed(){
       if (selected.getClass() == Pawn.class){
         selected.setFirstTurn();
       }
+      isWhiteTurn = !isWhiteTurn;
     }
     selected = null;
     list.clear();
