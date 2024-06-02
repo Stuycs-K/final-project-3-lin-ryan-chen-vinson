@@ -16,7 +16,7 @@ class Board{
     }else{
       return null;
     }
-  }
+  }  
   public void initializePieces(){
     board[0][0].setPiece(new Rook(board[0][0], 0));
     board[0][1].setPiece(new Knight(board[0][1], 0));
@@ -83,14 +83,4 @@ class Board{
     }
     return null;
   }
-/*
-  public boolean isCheckmate(int player, King white, King black){
-    if(player == 1){
-      return white.getValidMoves().size() == 0;
-    }else if(player == 2){
-      return black.getValidMoves().size() == 0;
-    }
-    return false;
-  }
-  */
-}
+  
