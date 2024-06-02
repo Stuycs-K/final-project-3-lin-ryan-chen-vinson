@@ -41,6 +41,32 @@ class Board{
       board[6][i].setPiece(new Pawn(board[6][i], 255));
     }
   }
+  
+  public boolean isCheck(boolean isWhite){
+    return true;
+  }
+  
+  private King findK(boolean isWhite){
+    int c;
+    if (isWhite){
+      c = 255;
+    }
+    else {
+      c = 0;
+    }
+    for (int i = 0; i < 8; i++){
+      for (int j = 0; j < 8; j++){
+        Square square = board[i][j];
+        if (square.isFull()){
+          Piece piece = square.getPiece();
+          if (piece.getClass() == King.class && piece.getColor() == c){
+            return (King) piece;
+          }
+        }
+      }
+    }
+    return null;
+  }
 /*
   public boolean isCheckmate(int player, King white, King black){
     if(player == 1){
