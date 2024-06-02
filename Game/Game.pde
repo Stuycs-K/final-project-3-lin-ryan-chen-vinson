@@ -3,6 +3,7 @@ Board board;
 PImage kingW, kingB, queenW, queenB, rookW, rookB, bishopW, bishopB, knightW, knightB, pawnW, pawnB;
 Piece selected = null;
 ArrayList<Square> list = new ArrayList<Square>();
+boolean isWhiteTurn = true;
 
 
 void setup(){
@@ -58,12 +59,22 @@ void mousePressed(){
     Square square = board.getSquare(x,y);
     if(square != null && square.isFull()){
       selected = square.getPiece();
-      list = selected.getValidMoves(board.board);
+      if (isWhiteTurn && selected.getColor() == 255){
+        list = selected.getValidMoves(board.board);
+        isWhiteTurn = !isWhiteTurn;
+      }
+      else if (!isWhiteTurn && selected.getColor() == 0){
+        list = selected.getValidMoves(board.board);
+        isWhiteTurn = !isWhiteTurn;
+      }
     }
   }else{
     Square dSquare = board.getSquare(x, y);
     if(dSquare != null && list.contains(dSquare)){
       makeMove(selected, dSquare);
+      if (selected.getClass() == Pawn.class){
+        selected.setFirstTurn();
+      }
     }
     selected = null;
     list.clear();
