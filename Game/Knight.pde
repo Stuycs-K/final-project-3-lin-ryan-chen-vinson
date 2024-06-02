@@ -1,12 +1,6 @@
 class Knight extends Piece{
   public Knight(Square position, color c){
     super(position, c);
-    if (c == color(255)){
-      PImage p = loadImage("knightW.png");
-    }
-    else{
-      PImage p = loadImage("knightB.png");
-    }
   }
   
   public ArrayList<Square> getValidMoves(Square[][] board){
