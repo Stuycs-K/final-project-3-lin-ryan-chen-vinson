@@ -47,7 +47,14 @@
 - finished the knight class
 - fixed minor errors in several classes
 
-### 5/29/24
+### 5/30/24
 - finsihed initializeboard with white and black pieces
 - finished makeMoves method in game
 - temporarily removed Move class (see if we need later because it's kind of useless)
+
+### 5/31/24 + weekend
+- finished makMove for game to swap the pieces in board array
+- finished mousepressed so it's able to move pieces on screen to valid squares when clicking
+- fixed the board initialization issue that was breaking all the white pieces
+- fixed rook getValidMoves so all rooks can move correctly
+- finally figured out how to fix pawn getValidMoves so all pawns can move correctly
