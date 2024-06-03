@@ -158,3 +158,10 @@ void loadImages(){
   knightW = loadImage("knightW.png");
   knightB = loadImage("knightB.png");
 }
+
+void keyPressed(){
+  if (key == 'q'){
+    redraw();
+    board = new Board(1);
+  }
+}
