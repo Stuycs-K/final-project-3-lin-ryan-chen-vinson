@@ -9,6 +9,15 @@ class Board{
     }
     initializePieces();
   }
+  
+  public queenBoard(){
+    for(int i = 0; i < 8; i++){
+      for(int j = 0; j < 8; j++){
+        board[i][j] = new Square(i, j);
+      }
+    }
+    initializeQueen();
+  }
 
   public Square getSquare(int x, int y){
     if((x >= 0) && (x < 8) && (y >= 0) && (y < 8)){
@@ -40,6 +49,10 @@ class Board{
     for(int i = 0; i < 8; i++){
       board[6][i].setPiece(new Pawn(board[6][i], 255));
     }
+  }
+  
+  public void initializeQueen(){
+    board[7][3].setPiece(new Queen(board[7][3], 255));
   }
   
   public boolean isCheck(boolean isWhite){
