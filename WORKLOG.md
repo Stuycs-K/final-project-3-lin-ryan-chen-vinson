@@ -24,6 +24,14 @@
 - Worked on Game class (loadImage() and drawPieces() methods)
 - Attempted to do movement for pieces (added remove and setPosition)
 
+### 5/31/24 + weekend
+- Created win screen (not implemented yet)
+- Created reset method to reset state of the board
+- Attempted to create demo keys for each piece to show off movement
+- Worked on checkmate methods (not implemented yet)
+- Created turn system
+- added first move of pawn (special case) and fixed/confirmed movement for queen, bishop, and king
+
 ## GROUP MEMBER 2
 
 ### 5/23/24
