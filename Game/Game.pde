@@ -158,3 +158,15 @@ void loadImages(){
   knightW = loadImage("knightW.png");
   knightB = loadImage("knightB.png");
 }
+
+void keyPressed(){
+  if (key == 'r'){
+    redraw();
+    resetGame();
+  }
+}
+
+void resetGame(){
+  isWhiteTurn = true;
+  board = new Board();
+}
