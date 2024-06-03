@@ -160,8 +160,13 @@ void loadImages(){
 }
 
 void keyPressed(){
-  if (key == 'q'){
+  if (key == 'r'){
     redraw();
-    board = new Board(1);
+    resetGame();
   }
+}
+
+void resetGame(){
+  isWhiteTurn = true;
+  board = new Board();
 }
