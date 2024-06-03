@@ -161,8 +161,8 @@ void loadImages(){
 
 void keyPressed(){
   if (key == 'r'){
-    redraw();
     resetGame();
+    redraw();
   }
 }
 
