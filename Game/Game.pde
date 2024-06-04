@@ -19,6 +19,7 @@ void setup(){
 void draw(){
   grid();
   drawPieces();
+  drawPromoScreen();
 }
 
 void grid() {
@@ -186,4 +187,21 @@ void promote(Piece piece){
   promoP = null;
   isWhiteTurn = !isWhiteTurn;
   redraw();
+}
+
+void drawPromoScreen(){
+  rectMode(CENTER);
+  fill(255);
+  rect(400, 400, 350, 175, 15, 15, 15, 15);
+  textSize(24);
+  fill(0);
+  text("PROMOTE TO: ", 330, 345);
+  if (isWhiteTurn){
+    image(queenW, 250, 370, 75, 75);
+    image(knightW, 325, 370, 75, 75);
+    image(rookW, 400, 370, 75, 75);
+    image(bishopW, 475, 370, 75, 75);
+  } else {
+    
+  }
 }
