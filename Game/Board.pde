@@ -42,19 +42,23 @@ class Board{
     }
   }
   
-  public boolean isCheck(boolean isWhite){
-    King king = findK(isWhite);
-    if (king == null){
+  public boolean isInCheck(color c){
+    King king = findK(c);
+    if(king == null){
       return false;
     }
-    Square kingPos = king.getPosition();
-    for (int i = 0; i < 8; i++){
-      for (int j = 0; j < 8; j++){
-        Square square = board[i][j];
-        if (square.isFull() && square.getPiece().getColor() != king.getColor()){
-          ArrayList<Square> list = square.getPiece().getValidMoves(board);
-          if (list.contains(kingPos)){
-            return true;
+    int x = king.getPosition().getX();
+    int y = king.getPosition().getY();
+    
+    for(int i = 0; i < 8; i++){
+      for(int j = 0; j < 8; j++){
+        Piece piece = board[i][j].getPiece();
+        if(piece != null && piece.getColor() != c){
+          ArrayList<Square> list = piece.getValidMoves(board);
+          for(Square move : list){
+            if(move.getX() == x && move.getY() == y){
+              return true;
+            }
           }
         }
       }
