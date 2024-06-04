@@ -19,7 +19,9 @@ void setup(){
 void draw(){
   grid();
   drawPieces();
-  drawPromoScreen();
+  if (isPromoting){
+    drawPromoScreen();
+  }
 }
 
 void grid() {
@@ -56,6 +58,11 @@ void drawPieces(){
 }
 
 void mousePressed(){
+  if (isPromoting){
+    promoPressed();
+    return;
+  }
+  
   int x = mouseY/SQUARE_SIZE;
   int y = mouseX/SQUARE_SIZE;
   
@@ -75,9 +82,17 @@ void mousePressed(){
     if(dSquare != null && list.contains(dSquare)){
       makeMove(selected, dSquare);
       if (selected.getClass() == Pawn.class){
-        selected.setFirstTurn();
+        if (isPawnPromotion( (Pawn) selected)){
+          isPromoting = true;
+          promoSq = dSquare;
+          promoP = selected;
+        } else{
+          selected.setFirstTurn();
+        }
       }
-      isWhiteTurn = !isWhiteTurn;
+      if (!isPromoting){
+        isWhiteTurn = !isWhiteTurn;
+      }
     }
     selected = null;
     list.clear();
@@ -190,9 +205,8 @@ void promote(Piece piece){
 }
 
 void drawPromoScreen(){
-  rectMode(CENTER);
   fill(255);
-  rect(400, 400, 350, 175, 15, 15, 15, 15);
+  rect(225, 312.5, 350, 175, 15);
   textSize(24);
   fill(0);
   text("PROMOTE TO: ", 330, 345);
