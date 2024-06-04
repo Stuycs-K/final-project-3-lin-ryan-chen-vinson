@@ -4,6 +4,9 @@ PImage kingW, kingB, queenW, queenB, rookW, rookB, bishopW, bishopB, knightW, kn
 Piece selected = null;
 ArrayList<Square> list = new ArrayList<Square>();
 boolean isWhiteTurn = true;
+boolean isPromoting = false;
+Square promoSq = null;
+Piece promoP = null;
 
 
 void setup(){
@@ -174,4 +177,13 @@ void resetGame(){
 boolean isPawnPromotion(Pawn pawn){
   int r = pawn.getPosition().getX();
   return (pawn.getColor() == 255 && r == 0) || (pawn.getColor() == 0 && r == 7);
+}
+
+void promote(Piece piece){
+  promoSq.setPiece(piece);
+  isPromoting = false;
+  promoSq = null;
+  promoP = null;
+  isWhiteTurn = !isWhiteTurn;
+  redraw();
 }
