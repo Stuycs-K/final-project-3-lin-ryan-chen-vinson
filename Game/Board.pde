@@ -62,22 +62,12 @@ class Board{
     return false;
   }
   
-  private King findK(boolean isWhite){
-    int c;
-    if (isWhite){
-      c = 255;
-    }
-    else {
-      c = 0;
-    }
-    for (int i = 0; i < 8; i++){
-      for (int j = 0; j < 8; j++){
-        Square square = board[i][j];
-        if (square.isFull()){
-          Piece piece = square.getPiece();
-          if (piece.getClass() == King.class && piece.getColor() == c){
-            return (King) piece;
-          }
+  private King findK(color c){
+    for(int i = 0; i < 8; i++){
+      for(int j = 0; j < 8; j ++){
+        Piece piece = board[i][j].getPiece();
+        if(piece != null && piece.getClass() == King.class && piece.getColor() == c){
+          return (King) piece;
         }
       }
     }
