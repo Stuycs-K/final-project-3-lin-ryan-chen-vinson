@@ -170,3 +170,8 @@ void resetGame(){
   isWhiteTurn = true;
   board = new Board();
 }
+
+boolean isPawnPromotion(Pawn pawn){
+  int r = pawn.getPosition().getX();
+  return (pawn.getColor() == 255 && r == 0) || (pawn.getColor() == 0 && r == 7);
+}
