@@ -202,6 +202,27 @@ void drawPromoScreen(){
     image(rookW, 400, 370, 75, 75);
     image(bishopW, 475, 370, 75, 75);
   } else {
-    
+    image(queenB, 250, 370, 75, 75);
+    image(knightB, 325, 370, 75, 75);
+    image(rookB, 400, 370, 75, 75);
+    image(bishopB, 475, 370, 75, 75);
+  }
+}
+
+void promoPressed(){
+  int x = mouseX;
+  int y = mouseY;
+  if (x >= 250 && x <= 325 && y >= 370 && y <= 445){
+    promote(new Queen(promoSq, promoP.getColor()));
+    System.out.println("Queen selected");
+  } else if (x >= 325 && x <= 400 && y >= 370 && y <= 445){
+    promote(new Knight(promoSq, promoP.getColor()));
+    System.out.println("Knight selected");
+  } else if (x >= 400 && x <= 475 && y >= 370 && y <= 445){
+    promote(new Rook(promoSq, promoP.getColor()));
+    System.out.println("Rook selected");
+  } else if (x >= 475 && x <= 550 && y >= 370 && y <= 445){
+    promote(new Bishop(promoSq, promoP.getColor()));
+    System.out.println("Bishop selected");
   }
 }
