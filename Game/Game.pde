@@ -4,6 +4,9 @@ PImage kingW, kingB, queenW, queenB, rookW, rookB, bishopW, bishopB, knightW, kn
 Piece selected = null;
 ArrayList<Square> list = new ArrayList<Square>();
 boolean isWhiteTurn = true;
+boolean isPromoting = false;
+Square promoSq = null;
+Piece promoP = null;
 
 
 void setup(){
@@ -16,6 +19,9 @@ void setup(){
 void draw(){
   grid();
   drawPieces();
+  if (isPromoting){
+    drawPromoScreen();
+  }
 }
 
 void grid() {
@@ -52,6 +58,11 @@ void drawPieces(){
 }
 
 void mousePressed(){
+  if (isPromoting){
+    promoPressed();
+    return;
+  }
+  
   int x = mouseY/SQUARE_SIZE;
   int y = mouseX/SQUARE_SIZE;
   
@@ -71,9 +82,17 @@ void mousePressed(){
     if(dSquare != null && list.contains(dSquare)){
       makeMove(selected, dSquare);
       if (selected.getClass() == Pawn.class){
-        selected.setFirstTurn();
+        if (isPawnPromotion( (Pawn) selected)){
+          isPromoting = true;
+          promoSq = dSquare;
+          promoP = selected;
+        } else{
+          selected.setFirstTurn();
+        }
       }
-      isWhiteTurn = !isWhiteTurn;
+      if (!isPromoting){
+        isWhiteTurn = !isWhiteTurn;
+      }
     }
     selected = null;
     list.clear();
@@ -169,4 +188,55 @@ void keyPressed(){
 void resetGame(){
   isWhiteTurn = true;
   board = new Board();
+}
+
+boolean isPawnPromotion(Pawn pawn){
+  int r = pawn.getPosition().getX();
+  return (pawn.getColor() == 255 && r == 0) || (pawn.getColor() == 0 && r == 7);
+}
+
+void promote(Piece piece){
+  promoSq.setPiece(piece);
+  isPromoting = false;
+  promoSq = null;
+  promoP = null;
+  isWhiteTurn = !isWhiteTurn;
+  redraw();
+}
+
+void drawPromoScreen(){
+  fill(255);
+  rect(225, 312.5, 350, 175, 15);
+  textSize(24);
+  fill(0);
+  text("PROMOTE TO: ", 330, 345);
+  if (isWhiteTurn){
+    image(queenW, 250, 370, 75, 75);
+    image(knightW, 325, 370, 75, 75);
+    image(rookW, 400, 370, 75, 75);
+    image(bishopW, 475, 370, 75, 75);
+  } else {
+    image(queenB, 250, 370, 75, 75);
+    image(knightB, 325, 370, 75, 75);
+    image(rookB, 400, 370, 75, 75);
+    image(bishopB, 475, 370, 75, 75);
+  }
+}
+
+void promoPressed(){
+  int x = mouseX;
+  int y = mouseY;
+  if (x >= 250 && x <= 325 && y >= 370 && y <= 445){
+    promote(new Queen(promoSq, promoP.getColor()));
+    System.out.println("Queen selected");
+  } else if (x >= 325 && x <= 400 && y >= 370 && y <= 445){
+    promote(new Knight(promoSq, promoP.getColor()));
+    System.out.println("Knight selected");
+  } else if (x >= 400 && x <= 475 && y >= 370 && y <= 445){
+    promote(new Rook(promoSq, promoP.getColor()));
+    System.out.println("Rook selected");
+  } else if (x >= 475 && x <= 550 && y >= 370 && y <= 445){
+    promote(new Bishop(promoSq, promoP.getColor()));
+    System.out.println("Bishop selected");
+  }
 }
