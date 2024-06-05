@@ -42,19 +42,23 @@ class Board{
     }
   }
   
-  public boolean isCheck(boolean isWhite){
-    King king = findK(isWhite);
-    if (king == null){
+  public boolean isInCheck(color c){
+    King king = findK(c);
+    if(king == null){
       return false;
     }
-    Square kingPos = king.getPosition();
-    for (int i = 0; i < 8; i++){
-      for (int j = 0; j < 8; j++){
-        Square square = board[i][j];
-        if (square.isFull() && square.getPiece().getColor() != king.getColor()){
-          ArrayList<Square> list = square.getPiece().getValidMoves(board);
-          if (list.contains(kingPos)){
-            return true;
+    int x = king.getPosition().getX();
+    int y = king.getPosition().getY();
+    
+    for(int i = 0; i < 8; i++){
+      for(int j = 0; j < 8; j++){
+        Piece piece = board[i][j].getPiece();
+        if(piece != null && piece.getColor() != c){
+          ArrayList<Square> list = piece.getValidMoves(board);
+          for(Square move : list){
+            if(move.getX() == x && move.getY() == y){
+              return true;
+            }
           }
         }
       }
@@ -62,62 +66,28 @@ class Board{
     return false;
   }
   
-  private King findK(boolean isWhite){
-    int c;
-    if (isWhite){
-      c = 255;
-    }
-    else {
-      c = 0;
-    }
-    for (int i = 0; i < 8; i++){
-      for (int j = 0; j < 8; j++){
-        Square square = board[i][j];
-        if (square.isFull()){
-          Piece piece = square.getPiece();
-          if (piece.getClass() == King.class && piece.getColor() == c){
-            return (King) piece;
-          }
+  private King findK(color c){
+    for(int i = 0; i < 8; i++){
+      for(int j = 0; j < 8; j ++){
+        Piece piece = board[i][j].getPiece();
+        if(piece != null && piece.getClass() == King.class && piece.getColor() == c){
+          return (King) piece;
         }
       }
     }
     return null;
   }
   
-  public boolean isCheckmate(boolean isWhite){
-    if(!isCheck(isWhite)){
-      return false;
-    }
-    int c;
-    if (isWhite){
-      c = 255;
-    }
-    else {
-      c = 0;
-    }
-    for (int i = 0; i < 8; i++){
-      for (int j = 0; j < 8; j++){
-        Square square = board[i][j];
-        if (square.isFull() && square.getPiece().getColor() == c){
-          ArrayList<Square> list = square.getPiece().getValidMoves(board);
-        }
-        for (Square move : list){
-          Piece captured = move.getPiece();
-          Square original = square;
-          Piece moving = square.getPiece();
-          
-          original.removePiece();
-          move.setPiece(moving);
-          moving.setPosition(move);
-          
-          boolean inCheck = isCheck(isWhite);
-          
-          move.setPiece(captured);
-          original.setPiece(moving);
-          moving.setPosition(original);
-          
-          if (!inCheck){
-            return false;
+  public boolean isCheckmate(color c){
+    for(int i = 0 ; i < 8; i++){
+      for(int j = 0; j < 8; j++){
+        Piece piece = board[i][j].getPiece();
+        if(piece != null && piece.getColor() == c){
+          ArrayList<Square> list = piece.getValidMoves(board);
+          for(Square move : list){
+            if(!piece.causesCheck(this, move)){
+              return false;
+            }
           }
         }
       }
