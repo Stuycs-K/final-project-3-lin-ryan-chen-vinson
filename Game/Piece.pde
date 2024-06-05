@@ -25,4 +25,19 @@ abstract class Piece{
   public void setPosition(Square position){
     this.position = position;
   }
+  
+  public boolean causesCheck(Board board, Square dSquare){
+    Square original = this.position;
+    Piece captured = dSquare.getPiece();
+    original.removePiece();
+    dSquare.setPiece(this);
+    this.setPosition(dSquare);
+    
+    boolean isInCheck = board.isInCheck(this.c);
+    dSquare.setPiece(captured);
+    original.setPiece(this);
+    this.setPosition(original);
+    
+    return isInCheck;
+  }
 }

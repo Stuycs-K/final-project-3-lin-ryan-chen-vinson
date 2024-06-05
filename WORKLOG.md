@@ -32,6 +32,12 @@
 - Created turn system
 - added first move of pawn (special case) and fixed/confirmed movement for queen, bishop, and king
 
+### 6/3/24
+- Fully completed and implemented pawn promotion
+
+### 6/4/24
+- added highlighting feature (red for possible squares, green for selected square)
+
 ## GROUP MEMBER 2
 
 ### 5/23/24
@@ -66,3 +72,9 @@
 - fixed the board initialization issue that was breaking all the white pieces
 - fixed rook getValidMoves so all rooks can move correctly
 - finally figured out how to fix pawn getValidMoves so all pawns can move correctly
+
+### 6/4/24 + 6/5/24
+- discussed how to fix check and checkmate system
+- fixed findKing to find king for both colors
+- fixed isInCheck to determine if king of color is in check
+- wrote causesCheck to determine if a piece causes a check to see the validmoves for that piece
