@@ -18,6 +18,7 @@ void setup(){
 
 void draw(){
   grid();
+  drawValidMoves();
   drawPieces();
   if (isPromoting){
     drawPromoScreen();
@@ -238,5 +239,18 @@ void promoPressed(){
   } else if (x >= 475 && x <= 550 && y >= 370 && y <= 445){
     promote(new Bishop(promoSq, promoP.getColor()));
     System.out.println("Bishop selected");
+  }
+}
+
+void drawValidMoves() {
+  fill(255, 0, 0, 100);
+  noStroke();
+  for (Square s : list) {
+    square(s.getY() * SQUARE_SIZE, s.getX() * SQUARE_SIZE, SQUARE_SIZE);
+  }
+  if (selected != null){
+    fill(189, 255, 211, 100);
+    noStroke();
+    square(selected.getPosition().getY() * SQUARE_SIZE, selected.getPosition().getX() * SQUARE_SIZE, SQUARE_SIZE);
   }
 }
