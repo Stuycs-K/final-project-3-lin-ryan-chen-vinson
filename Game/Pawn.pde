@@ -27,7 +27,7 @@ class Pawn extends Piece {
       list.add(board[x + direction][y]);
     }
     
-    if(firstTurn && isValidMove(board, x + (2 * direction), y) && ! board[x + (2* direction)][y].isFull()){
+    if(firstTurn && isValidMove(board, x + (2 * direction), y) && ! board[x + direction][y].isFull() && ! board[x + (2* direction)][y].isFull()){
       list.add(board[x + (2 * direction)][y]);
     }
     
