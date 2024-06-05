@@ -7,7 +7,8 @@ boolean isWhiteTurn = true;
 boolean isPromoting = false;
 Square promoSq = null;
 Piece promoP = null;
-
+int[] prevPosition = new int[2];
+int[] currPosition = new int[2];
 
 void setup(){
   size(800,800);
@@ -19,6 +20,7 @@ void setup(){
 void draw(){
   grid();
   drawValidMoves();
+  drawPreviousMove();
   drawPieces();
   if (isPromoting){
     drawPromoScreen();
@@ -104,6 +106,11 @@ void mousePressed(){
       
 
 void makeMove(Piece piece, Square dSquare){
+  prevPosition[0] = piece.getPosition().getX();
+  prevPosition[1] = piece.getPosition().getY();
+  currPosition[0] = dSquare.getX();
+  currPosition[1] = dSquare.getY();
+  
   Square current = piece.getPosition();
   current.removePiece();
   dSquare.setPiece(piece);
@@ -253,4 +260,11 @@ void drawValidMoves() {
     noStroke();
     square(selected.getPosition().getY() * SQUARE_SIZE, selected.getPosition().getX() * SQUARE_SIZE, SQUARE_SIZE);
   }
+}
+
+void drawPreviousMove(){
+  fill(189, 255, 211, 100);
+  noStroke();
+  square(prevPosition[1] * SQUARE_SIZE, prevPosition[0] * SQUARE_SIZE, SQUARE_SIZE);
+  square(currPosition[1] * SQUARE_SIZE, currPosition[0] * SQUARE_SIZE, SQUARE_SIZE);
 }
