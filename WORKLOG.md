@@ -32,6 +32,12 @@
 - Created turn system
 - added first move of pawn (special case) and fixed/confirmed movement for queen, bishop, and king
 
+### 6/3/24
+- Fully completed and implemented pawn promotion
+
+### 6/4/24
+- added highlighting feature (red for possible squares, green for selected square)
+
 ## GROUP MEMBER 2
 
 ### 5/23/24
