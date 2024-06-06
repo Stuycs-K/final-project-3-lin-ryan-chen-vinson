@@ -75,6 +75,14 @@ void mousePressed(){
       selected = square.getPiece();
       if (isWhiteTurn && selected.getColor() == 255 || !isWhiteTurn && selected.getColor() == 0){
         list = selected.getValidMoves(board.board);
+        ArrayList<Square> validMoves = new ArrayList<Square>();
+        for(int i = 0; i < list.size(); i++){
+          Square move = list.get(i);
+          if(!selected.causesCheck(board, move)){
+            validMoves.add(move);
+          }
+        }
+        list = validMoves;
       }
       else {
         selected = null;
@@ -99,6 +107,29 @@ void mousePressed(){
     }
     selected = null;
     list.clear();
+  }
+  
+  color c = 0;
+  if(isWhiteTurn){
+    c = 255;
+  }
+  if(board.isInCheck(c)){
+    if(board.isCheckmate(c)){
+      if(isWhiteTurn){
+        println("White is in checkmate"); // temporary msg
+      } 
+      else{
+        println("Black is in checkmate"); //temporary msg
+      }
+    }
+    else{
+      if(isWhiteTurn){
+        println("White is in check");
+      }
+      else{
+        println("Black is in check");
+      }
+    }
   }
   redraw();
 }
