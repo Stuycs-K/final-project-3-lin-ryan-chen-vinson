@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 
 public class Rook extends Piece{
+  
   public Rook(Square position, color c){
     super(position, c);
+    this.hasMoved = false;
   }
   
   public boolean isValidMove(int newX, int newY){
