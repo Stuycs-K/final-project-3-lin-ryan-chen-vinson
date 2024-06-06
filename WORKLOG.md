@@ -38,6 +38,10 @@
 ### 6/4/24
 - added highlighting feature (red for possible squares, green for selected square)
 
+### 6/5/24 + 6/6/24
+- added highlighting original position and new position
+- began working on castling
+
 ## GROUP MEMBER 2
 
 ### 5/23/24
