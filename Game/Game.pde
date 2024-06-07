@@ -144,6 +144,26 @@ void makeMove(Piece piece, Square dSquare){
   
   Square current = piece.getPosition();
   current.removePiece();
+  
+  for(int i = 0; i < 8; i++){
+    for(int j = 0; j < 8; j++){
+      Piece p = board.getSquare(i, j).getPiece();
+      if(p != null && p.getClass() == Pawn.class && p.getColor() == piece.getColor()){
+        ((Pawn) p).setJustMovedTwo(false);
+      }
+    }
+  }
+  
+  if(piece.getClass() == Pawn.class && Math.abs(currPosition[0] - prevPosition[0]) == 2){
+    ((Pawn) piece).setJustMovedTwo(true);
+  }
+  
+  if(piece.getClass() == Pawn.class && Math.abs(currPosition[1] - prevPosition[1]) == 1 && !dSquare.isFull() && 
+  board.getSquare(prevPosition[0], currPosition[1]).isFull()){
+    Square captured = board.getSquare(prevPosition[0], currPosition[1]);
+    captured.removePiece();
+  }
+  
   dSquare.setPiece(piece);
   piece.setPosition(dSquare);
 }
