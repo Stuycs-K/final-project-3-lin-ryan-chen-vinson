@@ -7,8 +7,8 @@ boolean isWhiteTurn = true;
 boolean isPromoting = false;
 Square promoSq = null;
 Piece promoP = null;
-int[] prevPosition = new int[2];
-int[] currPosition = new int[2];
+int[] prevPosition = new int[]{1000000, 1000000};
+int[] currPosition = new int[]{1000000, 1000000};
 
 void setup(){
   size(800,800);

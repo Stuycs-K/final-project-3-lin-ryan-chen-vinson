@@ -2,6 +2,7 @@ abstract class Piece{
   color c;
   Square position;
   boolean firstTurn;
+  boolean hasMoved;
   
   public Piece(Square position, color c){
     this.position = position;

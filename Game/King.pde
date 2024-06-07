@@ -3,12 +3,7 @@ import java.util.*;
 class King extends Piece{
   public King(Square position, color c){
     super(position, c);
-    if (c == color(255)){
-      PImage p = loadImage("kingW.png");
-    }
-    else{
-      PImage p = loadImage("kingB.png");
-    }
+    this.hasMoved = false;
   }
   
   public boolean isValidMove(int newX, int newY){
