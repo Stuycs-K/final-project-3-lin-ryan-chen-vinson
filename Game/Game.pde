@@ -247,6 +247,8 @@ void keyPressed(){
 void resetGame(){
   isWhiteTurn = true;
   board = new Board();
+  prevPosition = new int[]{1000000, 1000000};
+  currPosition = new int[]{1000000, 1000000};
 }
 
 boolean isPawnPromotion(Pawn pawn){
