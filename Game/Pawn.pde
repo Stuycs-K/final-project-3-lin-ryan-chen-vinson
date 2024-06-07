@@ -1,10 +1,21 @@
 import java.util.ArrayList;
 
 class Pawn extends Piece {
+  public boolean justMovedTwo;
+  
   
   public Pawn(Square position, color c){
     super(position, c);
     this.firstTurn = true;
+    this.justMovedTwo = false;
+  }
+  
+  public boolean hasJustMovedTwo(){
+    return justMovedTwo;
+  }
+  
+  public void setJustMovedTwo(boolean boo){
+    this.justMovedTwo = boo;
   }
   
   public boolean isValidMove(Square[][] board, int x, int y){
