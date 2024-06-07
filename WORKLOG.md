@@ -38,6 +38,10 @@
 ### 6/4/24
 - added highlighting feature (red for possible squares, green for selected square)
 
+### 6/5/24 + 6/6/24
+- added highlighting original position and new position
+- began working on castling
+
 ## GROUP MEMBER 2
 
 ### 5/23/24
@@ -73,8 +77,13 @@
 - fixed rook getValidMoves so all rooks can move correctly
 - finally figured out how to fix pawn getValidMoves so all pawns can move correctly
 
-### 6/4/24 + 6/5/24
+### 6/3/24 + 6/4/24
 - discussed how to fix check and checkmate system
 - fixed findKing to find king for both colors
 - fixed isInCheck to determine if king of color is in check
 - wrote causesCheck to determine if a piece causes a check to see the validmoves for that piece
+
+### 6/5/24 + 6/6/24
+- fixed mousepressed to accomodate for new checkmate knowledge
+- finished and tested checkmate
+- started en passant
