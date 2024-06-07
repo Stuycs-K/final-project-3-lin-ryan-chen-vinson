@@ -50,6 +50,9 @@ class Pawn extends Piece {
       board[x + direction][y + 1].getPiece().getColor() != this.c){
         list.add(board[x + direction][y + 1]);
     }
+    
+    if(isValidMove(board, x, y -1) &7 isValidMove(board, x + direction, y - 1) && 
+    board[x][y-1].isFull() && board[x][y - 1].getPiece().getClass() = Pawn.class &&
     return list;
   }
 }
