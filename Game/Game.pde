@@ -169,54 +169,6 @@ void mousePressed(){
     }
     else{
       if(isWhiteTurn){
-        println("White is in check");
-      }
-      else{
-        println("Black is in check");
-      }
-    }
-  }
-  redraw();
-}
-
-  /*
-  else{
-    Square dSquare = board.getSquare(x, y);
-    if(dSquare != null && list.contains(dSquare)){
-      makeMove(selected, dSquare);
-      if (selected.getClass() == Pawn.class){
-        if (isPawnPromotion( (Pawn) selected)){
-          isPromoting = true;
-          promoSq = dSquare;
-          promoP = selected;
-        } else{
-          selected.setFirstTurn();
-        }
-      }
-      if (!isPromoting){
-        isWhiteTurn = !isWhiteTurn;
-      }
-    }
-    selected = null;
-    list.clear();
-  }
-  
-  color c = 0;
-  if(isWhiteTurn){
-    c = 255;
-  }
-  if(board.isInCheck(c)){
-    if(board.isCheckmate(c)){
-      if(isWhiteTurn){
-        winner = "Black";
-      } 
-      else{
-        winner = "White";
-      }
-      isGameOver = true;
-    }
-    else{
-      if(isWhiteTurn){
         wbChecked = 0;
       }
       else{
@@ -226,9 +178,7 @@ void mousePressed(){
   }
   redraw();
 }
-  */
       
-
 void makeMove(Piece piece, Square dSquare){
   prevPosition[0] = piece.getPosition().getX();
   prevPosition[1] = piece.getPosition().getY();
