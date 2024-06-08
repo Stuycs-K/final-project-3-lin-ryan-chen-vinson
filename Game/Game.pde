@@ -178,6 +178,11 @@ void makeMove(Piece piece, Square dSquare){
   
   dSquare.setPiece(piece);
   piece.setPosition(dSquare);
+  piece.hasMoved = true;
+  
+  if(piece.getClass() == King.class && Math.abs(prevPosition[1] - currPosition[1]) == 2){
+    handleCastling();
+  }
 }
 
 PImage getPieceImage(Piece piece){
