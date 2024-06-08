@@ -9,6 +9,8 @@ Square promoSq = null;
 Piece promoP = null;
 int[] prevPosition = new int[]{1000000, 1000000};
 int[] currPosition = new int[]{1000000, 1000000};
+Piece potentialRook = null;
+boolean castlingAttempt = false;
 boolean isGameOver = false;
 String winner = "";
 
@@ -325,6 +327,35 @@ void drawValidMoves() {
     noStroke();
     square(selected.getPosition().getY() * SQUARE_SIZE, selected.getPosition().getX() * SQUARE_SIZE, SQUARE_SIZE);
   }
+}
+
+boolean canCastle(King king, boolean kingside){
+  int x = king.getPosition().getX();
+  int y = king.getPosition().getY();
+  int rookCoord;
+  int a;
+  
+  if(kingside){
+    rookCoord = 7;
+    a = 1;
+  }
+  else{
+    rookCoord = 0;
+    a = -1;
+  }
+  
+  for(int i = 1; i <= 2; i ++){
+    if(board.getSquare(x, y + (i * a)).isFull()){
+      return false;
+    }
+  }
+  if(!kingside){
+    if(board.getSquare(x, y - 3).isFull()){
+      return false;
+    }
+  }
+  Piece rook = board.getSquare(x, rookCoord).getPiece();
+  return(rook != null && rook.getClass() == Rook.class && !rook.hasMoved);
 }
 
 void drawPreviousMove(){
