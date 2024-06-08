@@ -32,9 +32,7 @@ void draw(){
   if (isGameOver){
     drawWinScreen();
   }
-  if (wbChecked == 0 || wbChecked == 1){
-    drawCheckScreen();
-  }
+  drawCheckScreen();
 }
 
 void grid() {
@@ -386,6 +384,18 @@ void drawCheckScreen(){
     textSize(32);
     textAlign(CENTER, CENTER);
     text("Black is in check",  width / 2, 825);
+  }
+  else if (wbChecked == 3){
+    String p;
+    if (isWhiteTurn){
+      p = "White's";
+    } else {
+      p = "Black's";
+    }
+    fill(0);
+    textSize(32);
+    textAlign(CENTER, CENTER);
+    text(p + " turn",  width / 2, 825);
   }
   wbChecked = 3;
 }
