@@ -383,6 +383,28 @@ boolean isValidCastling(King king, Rook rook){
   return true;
 }
 
+void handleCastling(){
+  int rookSY;
+  int rookDY;
+  if(currPosition[1] > prevPosition[1]){
+    rookSY = 7;
+    rookDY = currPosition[1] -1;
+  } 
+  else{
+    rookSY = 0;
+    rookDY = currPosition[1] + 1;
+  }
+  
+  Square rookSSquare = board.getSquare(currPosition[0], rookSY);
+  Square rookDSquare = board.getSquare(currPosition[0], rookDY);
+  Piece rook = rookSSquare.getPiece();
+  
+  rookSSquare.removePiece();
+  rookDSquare.setPiece(rook);
+  rook.setPosition(rookDSquare);
+  rook.hasMoved = true;
+}
+
 void drawPreviousMove(){
   fill(189, 255, 211, 100);
   noStroke();
