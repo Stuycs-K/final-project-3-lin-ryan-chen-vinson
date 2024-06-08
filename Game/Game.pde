@@ -9,6 +9,8 @@ Square promoSq = null;
 Piece promoP = null;
 int[] prevPosition = new int[]{1000000, 1000000};
 int[] currPosition = new int[]{1000000, 1000000};
+Piece potentialRook = null;
+boolean castlingAttempt = false;
 boolean isGameOver = false;
 String winner = "";
 int wbChecked = 3;
@@ -100,6 +102,7 @@ void mousePressed(){
   int x = mouseY/SQUARE_SIZE;
   int y = mouseX/SQUARE_SIZE;
   
+  
   if(selected == null){
     Square square = board.getSquare(x,y);
     if(square != null && square.isFull()){
@@ -114,12 +117,70 @@ void mousePressed(){
           }
         }
         list = validMoves;
+        if(selected.getClass() == King.class && !selected.hasMoved){
+          highlightCastling((King) selected);
+        }
       }
       else {
         selected = null;
       }
     }
-  }else{
+  } 
+  else{
+    Square square = board.getSquare(x,y);
+    if(selected.getClass() == King.class && square != null && square.isFull() && square.getPiece().getClass() == Rook.class){
+      potentialRook = square.getPiece();
+      if(isValidCastling((King) selected, (Rook) potentialRook)){
+        castlingAttempt = true;
+        makeMove(selected, potentialRook.getPosition());
+      }
+    } else if(!castlingAttempt && square != null && list.contains(square)){
+        makeMove(selected, square);
+        if (selected.getClass() == Pawn.class){
+        if (isPawnPromotion((Pawn) selected)){
+          isPromoting = true;
+          promoSq = square;
+          promoP = selected;
+        } else{
+          selected.setFirstTurn();
+        }
+      }
+      if (!isPromoting){
+        isWhiteTurn = !isWhiteTurn;
+      }
+    }
+    selected = null;
+    list.clear();
+  }
+  
+  color c = 0;
+  if(isWhiteTurn){
+    c = 255;
+  }
+  if(board.isInCheck(c)){
+    if(board.isCheckmate(c)){
+      if(isWhiteTurn){
+        winner = "Black";
+      } 
+      else{
+        winner = "White";
+      }
+      isGameOver = true;
+    }
+    else{
+      if(isWhiteTurn){
+        println("White is in check");
+      }
+      else{
+        println("Black is in check");
+      }
+    }
+  }
+  redraw();
+}
+
+  /*
+  else{
     Square dSquare = board.getSquare(x, y);
     if(dSquare != null && list.contains(dSquare)){
       makeMove(selected, dSquare);
@@ -165,7 +226,7 @@ void mousePressed(){
   }
   redraw();
 }
-  
+  */
       
 
 void makeMove(Piece piece, Square dSquare){
@@ -198,6 +259,11 @@ void makeMove(Piece piece, Square dSquare){
   
   dSquare.setPiece(piece);
   piece.setPosition(dSquare);
+  piece.hasMoved = true;
+  
+  if(piece.getClass() == King.class && Math.abs(prevPosition[1] - currPosition[1]) == 2){
+    handleCastling();
+  }
 }
 
 PImage getPieceImage(Piece piece){
@@ -347,6 +413,93 @@ void drawValidMoves() {
     fill(189, 255, 211, 100);
     noStroke();
     square(selected.getPosition().getY() * SQUARE_SIZE, selected.getPosition().getX() * SQUARE_SIZE, SQUARE_SIZE);
+  }
+}
+
+boolean canCastle(King king, boolean kingside){
+  int x = king.getPosition().getX();
+  int y = king.getPosition().getY();
+  int rookCoord;
+  int a;
+  
+  if(kingside){
+    rookCoord = 7;
+    a = 1;
+  }
+  else{
+    rookCoord = 0;
+    a = -1;
+  }
+  
+  for(int i = 1; i <= 2; i ++){
+    if(board.getSquare(x, y + (i * a)).isFull()){
+      return false;
+    }
+  }
+  if(!kingside){
+    if(board.getSquare(x, y - 3).isFull()){
+      return false;
+    }
+  }
+  Piece rook = board.getSquare(x, rookCoord).getPiece();
+  return(rook != null && rook.getClass() == Rook.class && !rook.hasMoved);
+}
+
+boolean isValidCastling(King king, Rook rook){
+  if(king.hasMoved || rook.hasMoved){
+    return false;
+  }
+  int x = king.getPosition().getX();
+  int kingY = king.getPosition().getY();
+  int rookY = rook.getPosition().getY();
+  int a;
+  
+  if(kingY < rookY){
+    a = 1;
+  }
+  else{
+    a = -1;
+  }
+  
+  for(int i = 1; i < Math.abs(kingY - rookY); i++){
+    Square square = board.getSquare(x, kingY + i * a);
+    if(square.isFull() || king.causesCheck(board, square)){
+      return false;
+    }
+  }
+  return true;
+}
+
+void handleCastling(){
+  int rookSY;
+  int rookDY;
+  if(currPosition[1] > prevPosition[1]){
+    rookSY = 7;
+    rookDY = currPosition[1] -1;
+  } 
+  else{
+    rookSY = 0;
+    rookDY = currPosition[1] + 1;
+  }
+  
+  Square rookSSquare = board.getSquare(currPosition[0], rookSY);
+  Square rookDSquare = board.getSquare(currPosition[0], rookDY);
+  Piece rook = rookSSquare.getPiece();
+  
+  rookSSquare.removePiece();
+  rookDSquare.setPiece(rook);
+  rook.setPosition(rookDSquare);
+  rook.hasMoved = true;
+}
+
+void highlightCastling(King king){
+  int x = king.getPosition().getX();
+  int y = king.getPosition().getY();
+  if(canCastle(king, true)){
+    list.add(board.getSquare(x, y + 2));
+  }
+  if(canCastle(king, false)){
+    list.add(board.getSquare(x, y - 2));
   }
 }
 
