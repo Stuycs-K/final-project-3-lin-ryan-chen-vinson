@@ -358,6 +358,31 @@ boolean canCastle(King king, boolean kingside){
   return(rook != null && rook.getClass() == Rook.class && !rook.hasMoved);
 }
 
+boolean isValidCastling(King king, Rook rook){
+  if(king.hasMoved || rook.hasMoved){
+    return false;
+  }
+  int x = king.getPosition().getX();
+  int kingY = king.getPosition().getY();
+  int rookY = rook.getPosition().getY();
+  int a;
+  
+  if(kingY < rookY){
+    a = 1;
+  }
+  else{
+    a = -1;
+  }
+  
+  for(int i = 1; i < Math.abs(kingY - rookY); i++){
+    Square square = board.getSquare(x, kingY + i * a);
+    if(square.isFull() || king.causesCheck(board, square)){
+      return false;
+    }
+  }
+  return true;
+}
+
 void drawPreviousMove(){
   fill(189, 255, 211, 100);
   noStroke();
