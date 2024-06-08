@@ -14,7 +14,7 @@ String winner = "";
 int wbChecked = 3;
 
 void setup(){
-  size(800,800);
+  size(800,850);
   board = new Board();
   loadImages();
   noLoop();
@@ -22,6 +22,7 @@ void setup(){
 
 void draw(){
   grid();
+  drawNotation();
   drawValidMoves();
   drawPreviousMove();
   drawPieces();
@@ -49,8 +50,27 @@ void grid() {
         fill(118,150,86);
         stroke(118,150,86);
       }
-      square(SQUARE_SIZE * x, SQUARE_SIZE * i, SQUARE_SIZE);
+      square(SQUARE_SIZE * x, SQUARE_SIZE * i, SQUARE_SIZE);      
     }
+  }
+  fill(255);
+  rect(0, 801, 800, 50);
+}
+
+void drawNotation(){
+  char[] lets = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
+  int[] nums = new int[]{8, 7, 6, 5, 4, 3, 2, 1};
+  for (int x = 0; x < 8; x++){
+    fill(0);
+    textSize(18);
+    textAlign(CENTER, CENTER);
+    text(lets[x], SQUARE_SIZE * x + 50, 793);
+  }
+  for (int y = 0; y < 8; y++){
+    fill(0);
+    textSize(18);
+    textAlign(CENTER, CENTER);
+    text(nums[y], 10, SQUARE_SIZE * y + 50);
   }
 }
 
@@ -356,16 +376,16 @@ void drawWinScreen(){
 
 void drawCheckScreen(){
   if (wbChecked == 0){
-    fill(255);
+    fill(0);
     textSize(32);
     textAlign(CENTER, CENTER);
-    text("White is in check",  width / 2, height / 2);
+    text("White is in check",  width / 2, 825);
   }
   if (wbChecked == 1){
     fill(0);
     textSize(32);
     textAlign(CENTER, CENTER);
-    text("Black is in check",  width / 2, height / 2);
+    text("Black is in check",  width / 2, 825);
   }
   wbChecked = 3;
 }
