@@ -11,6 +11,7 @@ int[] prevPosition = new int[]{1000000, 1000000};
 int[] currPosition = new int[]{1000000, 1000000};
 boolean isGameOver = false;
 String winner = "";
+int wbChecked = 3;
 
 void setup(){
   size(800,800);
@@ -29,6 +30,9 @@ void draw(){
   }
   if (isGameOver){
     drawWinScreen();
+  }
+  if (wbChecked == 0 || wbChecked == 1){
+    drawCheckScreen();
   }
 }
 
@@ -134,10 +138,10 @@ void mousePressed(){
     }
     else{
       if(isWhiteTurn){
-        println("White is in check");
+        wbChecked = 0;
       }
       else{
-        println("Black is in check");
+        wbChecked = 1;
       }
     }
   }
@@ -257,6 +261,7 @@ void keyPressed(){
 void resetGame(){
   isWhiteTurn = true;
   isGameOver = false;
+  wbChecked = 3;
   board = new Board();
   prevPosition = new int[]{1000000, 1000000};
   currPosition = new int[]{1000000, 1000000};
@@ -347,4 +352,20 @@ void drawWinScreen(){
   text(winner + " won!", width / 2, height / 2);
   textSize(32);
   text("Press 'r' to restart", width / 2, height / 2 + 50);
+}
+
+void drawCheckScreen(){
+  if (wbChecked == 0){
+    fill(255);
+    textSize(32);
+    textAlign(CENTER, CENTER);
+    text("White is in check",  width / 2, height / 2);
+  }
+  if (wbChecked == 1){
+    fill(0);
+    textSize(32);
+    textAlign(CENTER, CENTER);
+    text("Black is in check",  width / 2, height / 2);
+  }
+  wbChecked = 3;
 }
