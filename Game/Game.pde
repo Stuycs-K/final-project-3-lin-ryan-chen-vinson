@@ -80,6 +80,7 @@ void mousePressed(){
   int x = mouseY/SQUARE_SIZE;
   int y = mouseX/SQUARE_SIZE;
   
+  
   if(selected == null){
     Square square = board.getSquare(x,y);
     if(square != null && square.isFull()){
@@ -94,12 +95,70 @@ void mousePressed(){
           }
         }
         list = validMoves;
+        if(selected.getClass() == King.class && !selected.hasMoved){
+          highlightCastling((King) selected);
+        }
       }
       else {
         selected = null;
       }
     }
-  }else{
+  } 
+  else{
+    Square square = board.getSquare(x,y);
+    if(selected.getClass() == King.class && square != null && square.isFull() && square.getPiece().getClass() == Rook.class){
+      potentialRook = square.getPiece();
+      if(isValidCastling((King) selected, (Rook) potentialRook)){
+        castlingAttempt = true;
+        makeMove(selected, potentialRook.getPosition());
+      }
+    } else if(!castlingAttempt && square != null && list.contains(square)){
+        makeMove(selected, square);
+        if (selected.getClass() == Pawn.class){
+        if (isPawnPromotion((Pawn) selected)){
+          isPromoting = true;
+          promoSq = square;
+          promoP = selected;
+        } else{
+          selected.setFirstTurn();
+        }
+      }
+      if (!isPromoting){
+        isWhiteTurn = !isWhiteTurn;
+      }
+    }
+    selected = null;
+    list.clear();
+  }
+  
+  color c = 0;
+  if(isWhiteTurn){
+    c = 255;
+  }
+  if(board.isInCheck(c)){
+    if(board.isCheckmate(c)){
+      if(isWhiteTurn){
+        winner = "Black";
+      } 
+      else{
+        winner = "White";
+      }
+      isGameOver = true;
+    }
+    else{
+      if(isWhiteTurn){
+        println("White is in check");
+      }
+      else{
+        println("Black is in check");
+      }
+    }
+  }
+  redraw();
+}
+
+  /*
+  else{
     Square dSquare = board.getSquare(x, y);
     if(dSquare != null && list.contains(dSquare)){
       makeMove(selected, dSquare);
@@ -145,7 +204,7 @@ void mousePressed(){
   }
   redraw();
 }
-  
+  */
       
 
 void makeMove(Piece piece, Square dSquare){
@@ -408,6 +467,17 @@ void handleCastling(){
   rookDSquare.setPiece(rook);
   rook.setPosition(rookDSquare);
   rook.hasMoved = true;
+}
+
+void highlightCastling(King king){
+  int x = king.getPosition().getX();
+  int y = king.getPosition().getY();
+  if(canCastle(king, true)){
+    list.add(board.getSquare(x, y + 2));
+  }
+  if(canCastle(king, false)){
+    list.add(board.getSquare(x, y - 2));
+  }
 }
 
 void drawPreviousMove(){
