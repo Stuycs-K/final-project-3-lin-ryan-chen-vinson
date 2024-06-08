@@ -335,10 +335,14 @@ void drawPreviousMove(){
 }
 
 void drawWinScreen(){
-  fill(0, 0, 0, 200);
+  fill(0, 0, 0, 100);
   rect(0, 0, width, height);
   textSize(64);
-  fill(255);
+  if (isWhiteTurn){
+    fill(0);
+  } else {
+    fill(255);
+  }
   textAlign(CENTER, CENTER);
   text(winner + " won!", width / 2, height / 2);
   textSize(32);
