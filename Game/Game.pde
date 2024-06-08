@@ -9,6 +9,8 @@ Square promoSq = null;
 Piece promoP = null;
 int[] prevPosition = new int[]{1000000, 1000000};
 int[] currPosition = new int[]{1000000, 1000000};
+boolean isGameOver = false;
+String winner = "";
 
 void setup(){
   size(800,800);
@@ -24,6 +26,9 @@ void draw(){
   drawPieces();
   if (isPromoting){
     drawPromoScreen();
+  }
+  if (isGameOver){
+    drawWinScreen();
   }
 }
 
@@ -63,6 +68,10 @@ void drawPieces(){
 void mousePressed(){
   if (isPromoting){
     promoPressed();
+    return;
+  }
+  
+  if (isGameOver){
     return;
   }
   
@@ -116,11 +125,12 @@ void mousePressed(){
   if(board.isInCheck(c)){
     if(board.isCheckmate(c)){
       if(isWhiteTurn){
-        println("White is in checkmate"); // temporary msg
+        winner = "Black";
       } 
       else{
-        println("Black is in checkmate"); //temporary msg
+        winner = "White";
       }
+      isGameOver = true;
     }
     else{
       if(isWhiteTurn){
@@ -246,9 +256,11 @@ void keyPressed(){
 
 void resetGame(){
   isWhiteTurn = true;
+  isGameOver = false;
   board = new Board();
   prevPosition = new int[]{1000000, 1000000};
   currPosition = new int[]{1000000, 1000000};
+  winner = "";
 }
 
 boolean isPawnPromotion(Pawn pawn){
@@ -320,4 +332,19 @@ void drawPreviousMove(){
   noStroke();
   square(prevPosition[1] * SQUARE_SIZE, prevPosition[0] * SQUARE_SIZE, SQUARE_SIZE);
   square(currPosition[1] * SQUARE_SIZE, currPosition[0] * SQUARE_SIZE, SQUARE_SIZE);
+}
+
+void drawWinScreen(){
+  fill(0, 0, 0, 100);
+  rect(0, 0, width, height);
+  textSize(64);
+  if (isWhiteTurn){
+    fill(0);
+  } else {
+    fill(255);
+  }
+  textAlign(CENTER, CENTER);
+  text(winner + " won!", width / 2, height / 2);
+  textSize(32);
+  text("Press 'r' to restart", width / 2, height / 2 + 50);
 }
