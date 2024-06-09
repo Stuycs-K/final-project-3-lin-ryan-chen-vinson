@@ -42,7 +42,7 @@
 - added highlighting original position and new position
 - began working on castling
 
-## GROUP MEMBER 2
+## Vinson Chen
 
 ### 5/23/24
 
@@ -87,3 +87,9 @@
 - fixed mousepressed to accomodate for new checkmate knowledge
 - finished and tested checkmate
 - started en passant
+
+### 6/7/24 + weekend
+- finsihed en passant getValidMoves
+- fixed makeMoves to accomodate for en passant
+- finished canCastle, isValidCastling, handleCastling, and highlightCastling
+- fixed makeMove and mousePressed to accomodate for castling
