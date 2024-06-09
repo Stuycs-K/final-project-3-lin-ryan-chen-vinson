@@ -302,6 +302,14 @@ void keyPressed(){
     enPassantInitialization();
     redraw();
   }
+  if (key == '1'){
+    checkInitialization();
+    redraw();
+  }
+  if (key == '2'){
+    checkmateInitialization();
+    redraw();
+  }
 }
 
 void resetGame(){
@@ -528,4 +536,18 @@ void enPassantInitialization(){
   resetGame();
   board.getSquare(6, 3).removePiece();
   board.getSquare(3, 3).setPiece(new Pawn(board.board[3][3], 255));
+}
+
+void checkInitialization(){
+  resetGame();
+  board.getSquare(6, 4).removePiece();
+  board.getSquare(1, 4).removePiece();
+  board.getSquare(1, 5).removePiece();
+}
+  
+void checkmateInitialization(){
+  resetGame();
+  board.getSquare(6, 4).removePiece();
+  board.getSquare(1, 6).removePiece();
+  board.getSquare(1, 5).removePiece();
 }
