@@ -290,6 +290,14 @@ void keyPressed(){
     resetGame();
     redraw();
   }
+  if (key == 'c'){
+    castleInitialization();
+    redraw();
+  }
+  if (key == 'p') {
+    pawnPromoInitialization();
+    redraw();
+  }
 }
 
 void resetGame(){
@@ -497,4 +505,17 @@ void drawCheckScreen(){
     text(p + " turn",  width / 2, 825);
   }
   wbChecked = 3;
+}
+
+void castleInitialization(){
+  resetGame();
+  board.getSquare(7, 2).removePiece();
+  board.getSquare(7, 3).removePiece();
+  board.getSquare(0, 5).removePiece();
+}
+
+void pawnPromoInitialization(){
+  resetGame();
+  board.getSquare(1, 6).setPiece(new Pawn(board.board[1][6], 255));
+  board.getSquare(6, 6).setPiece(new Pawn(board.board[6][6], 0));
 }
