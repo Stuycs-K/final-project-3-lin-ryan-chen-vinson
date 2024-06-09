@@ -298,6 +298,10 @@ void keyPressed(){
     pawnPromoInitialization();
     redraw();
   }
+  if (key == 'e'){
+    enPassantInitialization();
+    redraw();
+  }
 }
 
 void resetGame(){
@@ -518,4 +522,10 @@ void pawnPromoInitialization(){
   resetGame();
   board.getSquare(1, 6).setPiece(new Pawn(board.board[1][6], 255));
   board.getSquare(6, 6).setPiece(new Pawn(board.board[6][6], 0));
+}
+
+void enPassantInitialization(){
+  resetGame();
+  board.getSquare(6, 3).removePiece();
+  board.getSquare(3, 3).setPiece(new Pawn(board.board[3][3], 255));
 }
