@@ -49,7 +49,7 @@
 - Added number and letter notations for board
 - Added shortcuts for castling, en passant, and pawn promotion
 
-## GROUP MEMBER 2
+## Vinson Chen
 
 ### 5/23/24
 
@@ -94,3 +94,10 @@
 - fixed mousepressed to accomodate for new checkmate knowledge
 - finished and tested checkmate
 - started en passant
+
+### 6/7/24 + weekend
+- finsihed en passant getValidMoves
+- fixed makeMoves to accomodate for en passant
+- finished canCastle, isValidCastling, handleCastling, and highlightCastling
+- fixed makeMove and mousePressed to accomodate for castling
+- added shortcut hotkeys for check and checkmate
