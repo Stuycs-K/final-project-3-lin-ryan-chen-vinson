@@ -25,6 +25,10 @@ For the following positions, you may need to move extra pieces to alternate turn
 
 - Click on 'c' (lowercase) to turn the board into castling position. To perform queenside castling, which is set up on white side, the Knight must be moved out of the way first. Move a random black piece. Then, click on the white king and the square two to the left of the king. To perform kingside castling, which is set up on the black side, follow the same procedure, except it will be to the right of the black king.
 
+- Click on '1' to turn the board into a check position. To perform the check, move the white queen to H5. If you click on any black piece except for the black king or the black pawn at G7, you will realize that none of the pieces have valid moves because they don't cause black to be out of check. The only valid moves will be to move the black King to E7 to avoid the check or to move to the black pawn to G6 to block the check.
+
+- Click on '2' to turn the board into a checkmate position. In order to perform the checkmate, move the white queen to H5. Because there is a pawn in front of the king, the king cannot move anywhere to get ouf of check. There is also no longer a pawn on G7 so nothing can block the queen from taking the king.
+
 ## Presentation Link
 
 ## Major Bugs
