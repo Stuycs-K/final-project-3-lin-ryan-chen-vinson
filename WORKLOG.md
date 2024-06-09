@@ -1,13 +1,13 @@
 # Work Log
 
-## GROUP MEMBER 1
+## Ryan Lin
 
 ### 5/23/24
 
 - Set up Piece abstract class and classes for all the specific pieces (king, queen, rook, etc.)
 - Worked on Piece class, king class, and knight class, and attempted to fix errors that occurred (not fixed yet)
 
-### 5/24/24 + weekend
+### 5/24/24 + weekend (5/25 - 5/27)
 
 - Created another file to test board design/pattern
 - Created boundary method for piece movement that applies to all pieces
@@ -24,7 +24,7 @@
 - Worked on Game class (loadImage() and drawPieces() methods)
 - Attempted to do movement for pieces (added remove and setPosition)
 
-### 5/31/24 + weekend
+### 5/31/24 + weekend (6/1 - 6/2)
 - Created win screen (not implemented yet)
 - Created reset method to reset state of the board
 - Attempted to create demo keys for each piece to show off movement
@@ -42,6 +42,13 @@
 - added highlighting original position and new position
 - began working on castling
 
+### 6/7/24 + weekend (6/8 - 6/9)
+- Fixed highlight last move and highlight error when resetting game
+- Completed win screen
+- Created message bar for turn tracking and check
+- Added number and letter notations for board
+- Added shortcuts for castling, en passant, and pawn promotion
+
 ## GROUP MEMBER 2
 
 ### 5/23/24
@@ -50,7 +57,7 @@
 - Finished the constructors, accessors, and mutators for Board, Game, Square, and Move
 - Finished simple "is" methods for a few of the classes where applicable
 
-### 5/24/24 + weekend
+### 5/24/24 + weekend (5/25 - 5/27)
 - started is checkmate, need king class to be finished
 - added more necessary accessors
 - finished makeMove
@@ -70,7 +77,7 @@
 - finished makeMoves method in game
 - temporarily removed Move class (see if we need later because it's kind of useless)
 
-### 5/31/24 + weekend
+### 5/31/24 + weekend (6/1 - 6/2)
 - finished makMove for game to swap the pieces in board array
 - finished mousepressed so it's able to move pieces on screen to valid squares when clicking
 - fixed the board initialization issue that was breaking all the white pieces
