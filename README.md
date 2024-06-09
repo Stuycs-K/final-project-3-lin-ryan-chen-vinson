@@ -1,6 +1,5 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/syDSSnTt)
 # APCS2 Final Project
-THIS DOCUMENT IS REQUIRED
 ## Group Info
 Ryan Lin & Vinson Chen
 
@@ -24,7 +23,7 @@ For the following positions, you may need to move extra pieces to alternate turn
 
 - Click on 'p' (lowercase) to turn the board into pawn promotion position. Move the white pawn on the black side to capture the black rook. Click on the piece you want to promote your pawn to. The same can be done for the black pawn on the white side.
 
-- Click on 'c' (lowercase) to turn the board into castling position. To perform queenside castling, which is set up on white side, the Knight must be moved out of the way first. Then, click on the white king and the square two to the left of the king. To perform kingside castling, which is set up on the black side, follow the same procedure, except it will be to the right of the black king.
+- Click on 'c' (lowercase) to turn the board into castling position. To perform queenside castling, which is set up on white side, the Knight must be moved out of the way first. Move a random black piece. Then, click on the white king and the square two to the left of the king. To perform kingside castling, which is set up on the black side, follow the same procedure, except it will be to the right of the black king.
 
 ## Presentation Link
 
